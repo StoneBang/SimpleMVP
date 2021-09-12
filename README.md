@@ -1,0 +1,2 @@
+# SimpleMVP
+简易的mvp框架,只是一个框架,功能是把一些activity里面的操作,放到presenter里面去,然后再把结果返回给activity
