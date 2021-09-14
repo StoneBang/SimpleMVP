@@ -1,5 +1,11 @@
 package com.zkbl.toutiaojava.presenter;
 
+import android.util.Log;
+
+import com.zkbl.toutiaojava.bean.BaseModel;
+import com.zkbl.toutiaojava.bean.ManuFacture;
+import com.zkbl.toutiaojava.http.HttpUtil;
+import com.zkbl.toutiaojava.http.ResponseListener;
 import com.zkbl.toutiaojava.presenter.View.BaseView;
 import com.zkbl.toutiaojava.presenter.View.MainView;
 
@@ -8,8 +14,19 @@ import com.zkbl.toutiaojava.presenter.View.MainView;
  */
 public class MainPresenter extends BasePresenter<MainView> {
 
-    public void loadData(String str){
-        getBaseView().setData(str);
+    public void loadData(){
+        HttpUtil.getManufacturerList(new ResponseListener<BaseModel<ManuFacture>>() {
+            @Override
+            public void onSuccess(BaseModel<ManuFacture> data) {
+                Log.e("TAG", "onSuccess: " );
+                getBaseView().setData(data);
+            }
+
+            @Override
+            public void onFail(String msg) {
+                Log.e("TAG", "fail: " );
+            }
+        });
     }
 }
 
