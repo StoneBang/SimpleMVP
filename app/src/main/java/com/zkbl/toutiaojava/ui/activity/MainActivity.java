@@ -1,8 +1,9 @@
-package com.zkbl.toutiaojava;
+package com.zkbl.toutiaojava.ui.activity;
 
 import android.os.Handler;
 import android.util.Log;
 
+import com.zkbl.toutiaojava.R;
 import com.zkbl.toutiaojava.base.BaseActivity;
 import com.zkbl.toutiaojava.observer.core.Emmiter;
 import com.zkbl.toutiaojava.observer.core.OberservableCreate;
