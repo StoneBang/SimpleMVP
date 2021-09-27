@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.zkbl.toutiaojava.R;
 import com.zkbl.toutiaojava.base.BaseActivity;
+import com.zkbl.toutiaojava.greenDaoBean.Good;
 import com.zkbl.toutiaojava.observer.core.Emmiter;
 import com.zkbl.toutiaojava.observer.core.OberservableCreate;
 import com.zkbl.toutiaojava.observer.core.ObservableOnSubscribe;
@@ -16,6 +17,7 @@ import com.zkbl.toutiaojava.presenter.MainPresenter;
 import com.zkbl.toutiaojava.presenter.View.MainView;
 import com.zkbl.toutiaojava.ui.customerView.spinner.NiceSpinner;
 import com.zkbl.toutiaojava.ui.customerView.spinner.OnSpinnerItemSelectedListener;
+import com.zkbl.toutiaojava.util.GreenDaoUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,6 +45,12 @@ public class MainActivity extends BaseActivity<MainView> implements MainView {
             }
         });
     }
+
+    public void queryClick(View view) {
+        List<Good> goodList = GreenDaoUtils.getInstance(this).queryGoods();
+        Log.e("TAG", "queryClick: "+goodList.size() );
+    }
+
     class Person {
 
         private String name;
@@ -68,7 +76,7 @@ public class MainActivity extends BaseActivity<MainView> implements MainView {
     }
     @Override
    protected void init() {
-        ((MainPresenter)getPresenter()).loadData();
+//        ((MainPresenter)getPresenter()).loadData();
 //         OberservableCreate .create(new ObservableOnSubscribe<Integer>() {
 //            @Override
 //            public void subScribe(Emmiter emmiter) {

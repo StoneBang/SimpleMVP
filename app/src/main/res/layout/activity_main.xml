@@ -25,4 +25,10 @@
         android:layout_height="100dp"
         android:layout_marginTop="8dp" />
 
+    <Button
+        android:onClick="queryClick"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="查询"/>
+
 </LinearLayout>

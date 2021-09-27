@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.greenrobot.greendao'
 }
 
 android {
@@ -26,7 +27,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    greendao {
+        schemaVersion 9
+        targetGenDir 'src/main/java'
+        daoPackage "${android.defaultConfig.applicationId}.greenDao"
+    }
 //    def listSubFile = {
 //        def resFolder = 'src/main/res'
 //        def files = file(resFolder).listFiles()
@@ -66,6 +71,7 @@ dependencies {
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+    implementation 'org.greenrobot:greendao:3.3.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
