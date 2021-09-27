@@ -1,4 +1,4 @@
-package com.zkbl.toutiaojava.ui.customerView;
+package com.zkbl.toutiaojava.ui.customerView.EditText;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -19,7 +19,6 @@ import android.view.MotionEvent;
 import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
