@@ -22,5 +22,4 @@ public class GoodAuto {
     private String id;
     private String createDate;
 
-
 }
