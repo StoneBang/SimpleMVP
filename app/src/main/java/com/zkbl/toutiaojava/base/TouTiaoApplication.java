@@ -15,6 +15,9 @@ import com.zkbl.toutiaojava.greenDao.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 
+import cn.leancloud.LCLogger;
+import cn.leancloud.LeanCloud;
+
 /**
  * Create by StoneBang at 2021/9/27
  */
@@ -29,6 +32,8 @@ public class TouTiaoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initDataBase();
+        LeanCloud.setLogLevel(LCLogger.Level.DEBUG);
+        LeanCloud.initialize(this,"RhlN9dAQ2NdA9xN5EQLlP86f-gzGzoHsz","eSqsG0qebrow3M7sKwvdo4yV","https://rhln9daq.lc-cn-n1-shared.com");
     }
 
     public void initDataBase(){

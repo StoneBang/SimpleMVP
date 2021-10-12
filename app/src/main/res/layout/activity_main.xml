@@ -6,29 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="222"/>
+<!--    <com.zkbl.toutiaojava.ui.customerView.EditText.HBBEditText-->
+<!--        android:hint="圆角矩形样式"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:gravity="center_vertical|left"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        app:clearDrawable="@drawable/clear_all"-->
+<!--        app:visibleDrawable="@drawable/visible"-->
+<!--        app:invisibleDrawable="@drawable/invisible"-->
+<!--        app:borderStyle="roundRect"-->
+<!--        app:styleColor="#008B8B"/>-->
+<!--    -->
+<!--    <com.zkbl.toutiaojava.ui.customerView.spinner.NiceSpinner-->
+<!--        android:id="@+id/nice_spinner"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginTop="8dp" />-->
 
-    <com.zkbl.toutiaojava.ui.customerView.EditText.HBBEditText
-        android:hint="圆角矩形样式"
-        android:inputType="textPassword"
-        android:gravity="center_vertical|left"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:clearDrawable="@drawable/clear_all"
-        app:visibleDrawable="@drawable/visible"
-        app:invisibleDrawable="@drawable/invisible"
-        app:borderStyle="roundRect"
-        app:styleColor="#008B8B"/>
-    
-    <com.zkbl.toutiaojava.ui.customerView.spinner.NiceSpinner
-        android:id="@+id/nice_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp" />
-
-    <Button
-        android:onClick="queryClick"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="查询"/>
+<!--    <Button-->
+<!--        android:onClick="queryClick"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:text="查询"/>-->
 
 </LinearLayout>

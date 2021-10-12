@@ -1,12 +1,10 @@
 package com.zkbl.toutiaojava.http;
 
-import android.util.Log;
-
 import com.orhanobut.logger.Logger;
 import com.zkbl.toutiaojava.base.Constant;
 import com.zkbl.toutiaojava.bean.BaseModel;
-import com.zkbl.toutiaojava.bean.Goods;
-import com.zkbl.toutiaojava.bean.ManuFacture;
+import com.zkbl.toutiaojava.bean.highValue.Goods;
+import com.zkbl.toutiaojava.bean.highValue.ManuFacture;
 
 import java.util.concurrent.TimeUnit;
 

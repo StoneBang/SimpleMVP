@@ -1,8 +1,8 @@
 package com.zkbl.toutiaojava.http;
 
 import com.zkbl.toutiaojava.bean.BaseModel;
-import com.zkbl.toutiaojava.bean.Goods;
-import com.zkbl.toutiaojava.bean.ManuFacture;
+import com.zkbl.toutiaojava.bean.highValue.Goods;
+import com.zkbl.toutiaojava.bean.highValue.ManuFacture;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

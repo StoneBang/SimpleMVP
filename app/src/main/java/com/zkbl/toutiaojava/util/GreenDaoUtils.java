@@ -45,11 +45,6 @@ public class GreenDaoUtils {
         return queryGood;
     }
 
-    public List<Good>  test(String goodId){
-        String[] goodList = {"1","2","3","4"};
-        List<Good> queryGood = goodDao.queryBuilder().where(GoodDao.Properties.Id.in(goodList)).list();
-        return queryGood;
-    }
 
     public void deleteGoods(){
         goodDao.deleteAll();

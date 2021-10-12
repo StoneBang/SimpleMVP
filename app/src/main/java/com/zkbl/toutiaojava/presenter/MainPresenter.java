@@ -2,15 +2,9 @@ package com.zkbl.toutiaojava.presenter;
 
 import android.content.Context;
 import android.util.Log;
-import android.util.Xml;
 
-import com.zkbl.toutiaojava.bean.BaseModel;
-import com.zkbl.toutiaojava.bean.ManuFacture;
 import com.zkbl.toutiaojava.http.DownLoadUtil;
 import com.zkbl.toutiaojava.http.DownloadListener;
-import com.zkbl.toutiaojava.http.HttpUtil;
-import com.zkbl.toutiaojava.http.ResponseListener;
-import com.zkbl.toutiaojava.presenter.View.BaseView;
 import com.zkbl.toutiaojava.presenter.View.MainView;
 
 import org.xmlpull.v1.XmlPullParser;

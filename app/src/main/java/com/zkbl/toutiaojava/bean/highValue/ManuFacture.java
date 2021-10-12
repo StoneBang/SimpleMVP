@@ -1,4 +1,4 @@
-package com.zkbl.toutiaojava.bean;
+package com.zkbl.toutiaojava.bean.highValue;
 
 import java.util.List;
 

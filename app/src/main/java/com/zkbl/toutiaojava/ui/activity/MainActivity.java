@@ -1,17 +1,16 @@
 package com.zkbl.toutiaojava.ui.activity;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.zkbl.toutiaojava.R;
 import com.zkbl.toutiaojava.base.BaseActivity;
+import com.zkbl.toutiaojava.bean.github.GithubUser;
 import com.zkbl.toutiaojava.greenDaoBean.Good;
-import com.zkbl.toutiaojava.observer.core.Emmiter;
-import com.zkbl.toutiaojava.observer.core.OberservableCreate;
-import com.zkbl.toutiaojava.observer.core.ObservableOnSubscribe;
-import com.zkbl.toutiaojava.observer.core.Observer;
+import com.zkbl.toutiaojava.http.github.GithubService;
+import com.zkbl.toutiaojava.http.github.ServiceFactory;
+import com.zkbl.toutiaojava.http.github.User;
 import com.zkbl.toutiaojava.presenter.BasePresenter;
 import com.zkbl.toutiaojava.presenter.MainPresenter;
 import com.zkbl.toutiaojava.presenter.View.MainView;
@@ -19,14 +18,24 @@ import com.zkbl.toutiaojava.ui.customerView.spinner.NiceSpinner;
 import com.zkbl.toutiaojava.ui.customerView.spinner.OnSpinnerItemSelectedListener;
 import com.zkbl.toutiaojava.util.GreenDaoUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.GlobalScope;
 
 public class MainActivity extends BaseActivity<MainView> implements MainView {
 
-
+    private  final String[] mFamousUsers =  {"SpikeKing", "JakeWharton", "rock3r", "Takhion", "dextorer", "Mariuxtheone"};
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -34,16 +43,63 @@ public class MainActivity extends BaseActivity<MainView> implements MainView {
 
     @Override
     protected void initView() {
-        NiceSpinner spinner = findViewById(R.id.nice_spinner);
-        List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
-        spinner.attachDataSource(dataset);
-        spinner.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
-            @Override
-            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(MainActivity.this, "Selected: " + item, Toast.LENGTH_SHORT).show();
-            }
-        });
+        GithubService gitHubService = ServiceFactory.createServiceFrom(GithubService.class, GithubService.ENDPOINT);
+//        Observable.interval(2000,TimeUnit.MILLISECONDS).take(10).subscribe(new Observer<Long>() {
+//            @Override
+//            public void onSubscribe(@NonNull Disposable d) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(@NonNull Long aLong) {
+//                Log.e("TAG", "得到的数据"+aLong );
+//            }
+//
+//            @Override
+//            public void onError(@NonNull Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//
+//            }
+//        });
+        Observable.fromArray(mFamousUsers) //我的参数是什么呢？ {}
+                .flatMap(gitHubService::getUserData)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<GithubUser>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull GithubUser githubUser) {
+                        Log.e("TAG", "得到的数据"+githubUser );
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+//        NiceSpinner spinner = findViewById(R.id.nice_spinner);
+//        List<String> dataset = new LinkedList<>(Arrays.asList("One", "Two", "Three", "Four", "Five"));
+//        spinner.attachDataSource(dataset);
+//        spinner.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
+//                String item = parent.getItemAtPosition(position).toString();
+//                Toast.makeText(MainActivity.this, "Selected: " + item, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     public void queryClick(View view) {
@@ -76,6 +132,9 @@ public class MainActivity extends BaseActivity<MainView> implements MainView {
     }
     @Override
    protected void init() {
+//        LCObject testObject = new LCObject("TestObject");
+//        testObject.put("words", "Hello world!");
+//        testObject.saveInBackground().blockingSubscribe();
 //        ((MainPresenter)getPresenter()).loadData();
 //         OberservableCreate .create(new ObservableOnSubscribe<Integer>() {
 //            @Override
